@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://korayoner.github.io/dither-studio/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://korayoner.github.io/dither-studio/og-image.png</image:loc>
+      <image:title>Dither Studio — Dithering görsel aracı · Koray Öner</image:title>
+      <image:caption>1-bit, 8-bit, 16-bit ve 32-bit dithering aracı. Geliştirici: Koray Öner.</image:caption>
+    </image:image>
+  </url>
+</urlset>
