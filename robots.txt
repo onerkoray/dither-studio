@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://korayoner.github.io/dither-studio/sitemap.xml
+Sitemap: https://onerkoray.github.io/dither-studio/sitemap.xml

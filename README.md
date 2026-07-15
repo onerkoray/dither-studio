@@ -4,7 +4,7 @@
 
 Nous Research portalındaki dithering estetiğinden ilham alan, tamamen tarayıcıda çalışan bir görsel dönüştürme aracı. Görsellerinizi klasik retro/piksel dokusuna dönüştürür. Hiçbir görsel sunucuya yüklenmez — tüm işleme istemci tarafında yapılır.
 
-🔗 **Canlı demo:** https://korayoner.github.io/dither-studio/
+🔗 **Canlı demo:** https://onerkoray.github.io/dither-studio/
 
 ## Özellikler
 
@@ -34,7 +34,7 @@ Ardından `http://localhost:8000` adresini açın.
 2. Depo ayarları → **Pages** → kaynak olarak `main` / `root` seçin.
 3. Site `https://<kullanıcı-adı>.github.io/dither-studio/` adresinde yayınlanır.
 
-> Not: `sitemap.xml`, `robots.txt` ve meta etiketlerindeki URL'ler `korayoner.github.io/dither-studio/` içindir. Farklı bir alan adı kullanıyorsanız bunları güncelleyin.
+> Not: `sitemap.xml`, `robots.txt` ve meta etiketlerindeki URL'ler `onerkoray.github.io/dither-studio/` içindir. Farklı bir alan adı kullanıyorsanız bunları güncelleyin.
 
 ## Teknoloji
 
@@ -42,7 +42,7 @@ Saf HTML + CSS + Vanilla JavaScript (Canvas API). Bağımlılık yok.
 
 ## Lisans
 
-[MIT](./LICENSE) © [Koray Öner](https://korayoner.github.io/)
+[MIT](./LICENSE) © [Koray Öner](https://onerkoray.github.io/)
 
 ---
 
