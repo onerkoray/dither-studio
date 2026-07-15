@@ -53,8 +53,13 @@
 
   <main>
     <section class="hero">
-      <h1>Dithering Görsel Aracı</h1>
-      <p class="lede">Görsellerinizi <strong>1-bit</strong>, <strong>8-bit</strong>, <strong>16-bit</strong> ve <strong>32-bit</strong> derinliklerinde dithering efektiyle dönüştürün. Her şey tarayıcınızda çalışır — hiçbir görsel sunucuya yüklenmez.</p>
+      <canvas id="heroDither" class="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="eyebrow">DITHER · STUDIO</p>
+        <h1>Dithering Görsel Aracı</h1>
+        <p class="lede">Görsellerinizi <strong>1-bit</strong>, <strong>8-bit</strong>, <strong>16-bit</strong> ve <strong>32-bit</strong> derinliklerinde dithering efektiyle dönüştürün. Her şey tarayıcınızda çalışır — hiçbir görsel sunucuya yüklenmez.</p>
+        <a href="#tool" class="btn primary hero-cta">Aracı Aç ↓</a>
+      </div>
     </section>
 
     <section id="tool" class="studio">
@@ -124,6 +129,8 @@
       </div>
     </section>
 
+    <hr class="dither-rule" aria-hidden="true" />
+
     <section id="hakkinda" class="about">
       <h2>Dithering nedir?</h2>
       <p>Dithering, sınırlı bir renk paletiyle daha zengin tonların yanılsamasını yaratmak için pikselleri düzenli veya hesaplanmış desenler halinde dağıtan bir tekniktir. Retro bilgisayarlar, gazete baskıları ve piksel sanatının karakteristik dokusu buradan gelir.</p>
@@ -142,6 +149,7 @@
     <p class="fine">Tüm işlemler istemci tarafında yapılır. Görselleriniz cihazınızdan çıkmaz.</p>
   </footer>
 
+  <script src="hero.js"></script>
   <script src="dither.js"></script>
 </body>
 </html>
