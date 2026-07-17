@@ -29,6 +29,14 @@
     32: "Tam renk + alfa · bantlaşma giderici hafif dithering",
   };
 
+  const METHOD_NOTES = {
+    floyd: "Hata yayılımı: her pikselin kuantalama hatasını komşularına dağıtır. En pürüzsüz, fotoğrafımsı sonuç.",
+    atkinson: "Hatanın yalnızca bir kısmını yayar; daha yüksek kontrast, temiz ve “Macintosh” dokusu.",
+    bayer4: "Sıralı (ordered) dithering: 4×4 eşik matrisiyle düzenli, tekrar eden çapraz desen. Retro/baskı hissi.",
+    bayer8: "Sıralı dithering: 8×8 matris — daha ince, daha yumuşak geçişli düzenli desen.",
+    none: "Dithering yok; renkler doğrudan en yakın palete yuvarlanır. Bantlaşma görünür, en sert sonuç.",
+  };
+
   // 8×8 ve 4×4 Bayer eşik matrisleri (0..1 normalize)
   const BAYER4 = [
     [0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5],
@@ -231,9 +239,22 @@
   }
 
   /* ---------- UI bağlama ---------- */
+  function rgbToHex(rgb) {
+    return "#" + rgb.map((v) => v.toString(16).padStart(2, "0")).join("");
+  }
+
+  function applyPalette(fgHex, bgHex) {
+    state.fg = hexToRgb(fgHex);
+    state.bg = hexToRgb(bgHex);
+    $("fgColor").value = fgHex;
+    $("bgColor").value = bgHex;
+    render();
+  }
+
   function bind() {
     $("year").textContent = new Date().getFullYear();
     $("depthNote").textContent = DEPTH_NOTES[1];
+    $("methodNote").textContent = METHOD_NOTES.floyd;
 
     $("pick").addEventListener("click", () => $("file").click());
     $("file").addEventListener("change", (e) => handleFile(e.target.files[0]));
@@ -254,23 +275,38 @@
         state.depth = parseInt(btn.dataset.depth, 10);
         $("depthNote").textContent = DEPTH_NOTES[state.depth];
         // palet yalnızca 1-bit için anlamlı
-        $("palette").style.opacity = state.depth === 1 ? "1" : "0.4";
-        $("palette").style.pointerEvents = state.depth === 1 ? "auto" : "none";
+        const one = state.depth === 1;
+        $("paletteGroup").classList.toggle("disabled", !one);
+        $("paletteNote").textContent = one
+          ? ""
+          : "Palet yalnızca 1-bit derinlikte kullanılır. 8/16/32-bit modları görüntünün kendi renklerini kuantalar.";
         render();
       });
     });
 
-    $("method").addEventListener("change", (e) => { state.method = e.target.value; render(); });
+    $("method").addEventListener("change", (e) => {
+      state.method = e.target.value;
+      $("methodNote").textContent = METHOD_NOTES[state.method] || "";
+      render();
+    });
 
     $("palette").querySelectorAll(".sw").forEach((sw) => {
       sw.addEventListener("click", () => {
         $("palette").querySelectorAll(".sw").forEach((s) => s.classList.remove("on"));
         sw.classList.add("on");
-        state.fg = hexToRgb(sw.dataset.fg);
-        state.bg = hexToRgb(sw.dataset.bg);
-        render();
+        applyPalette(sw.dataset.fg, sw.dataset.bg);
       });
     });
+
+    // özel renk seçiciler — 5 preset sınırını kaldırır
+    const onCustom = () => {
+      $("palette").querySelectorAll(".sw").forEach((s) => s.classList.remove("on"));
+      state.fg = hexToRgb($("fgColor").value);
+      state.bg = hexToRgb($("bgColor").value);
+      render();
+    };
+    $("fgColor").addEventListener("input", onCustom);
+    $("bgColor").addEventListener("input", onCustom);
 
     const slider = (id, key, fmt) => {
       $(id).addEventListener("input", (e) => {

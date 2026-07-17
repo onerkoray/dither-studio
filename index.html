@@ -97,17 +97,26 @@
             <option value="bayer8">Ordered · Bayer 8×8</option>
             <option value="none">Yok (sadece kuantalama)</option>
           </select>
+          <p class="depth-note" id="methodNote"></p>
         </fieldset>
 
-        <fieldset class="group">
-          <legend>Palet (1-bit)</legend>
+        <fieldset class="group" id="paletteGroup">
+          <legend>Palet <span class="dim">· 1-bit</span></legend>
           <div class="palettes" id="palette">
             <button class="sw on" data-fg="#e8e4d8" data-bg="#0a0a0a" style="--a:#e8e4d8;--b:#0a0a0a" title="Kağıt"></button>
             <button class="sw" data-fg="#00ff9c" data-bg="#001b12" style="--a:#00ff9c;--b:#001b12" title="Terminal"></button>
             <button class="sw" data-fg="#ffb000" data-bg="#1a0e00" style="--a:#ffb000;--b:#1a0e00" title="Amber"></button>
             <button class="sw" data-fg="#8be9fd" data-bg="#0b1020" style="--a:#8be9fd;--b:#0b1020" title="Buz"></button>
             <button class="sw" data-fg="#ffffff" data-bg="#000000" style="--a:#ffffff;--b:#000000" title="Mono"></button>
+            <button class="sw" data-fg="#ff5c8a" data-bg="#1c0716" style="--a:#ff5c8a;--b:#1c0716" title="Neon"></button>
+            <button class="sw" data-fg="#c8ff00" data-bg="#12160a" style="--a:#c8ff00;--b:#12160a" title="Asit"></button>
+            <button class="sw" data-fg="#d8b4ff" data-bg="#140b1f" style="--a:#d8b4ff;--b:#140b1f" title="Mor"></button>
           </div>
+          <div class="custom-pal">
+            <label>Ön renk <input type="color" id="fgColor" value="#e8e4d8" /></label>
+            <label>Zemin <input type="color" id="bgColor" value="#0a0a0a" /></label>
+          </div>
+          <p class="depth-note" id="paletteNote"></p>
         </fieldset>
 
         <fieldset class="group sliders">

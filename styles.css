@@ -44,10 +44,10 @@ h1,h2{letter-spacing:-.02em}
 }
 .hero-inner{
   position:relative; z-index:2; max-width:760px; margin:0 auto;
-  padding:96px 24px 88px; text-align:center;
+  padding:52px 24px 44px; text-align:center;
 }
-.eyebrow{font-family:var(--mono); letter-spacing:.34em; font-size:12px; color:var(--dim); margin:0 0 18px}
-.hero h1{font-size:clamp(32px,6vw,60px); margin:0 0 18px; text-shadow:0 2px 30px #0a0a0a}
+.eyebrow{font-family:var(--mono); letter-spacing:.34em; font-size:12px; color:var(--dim); margin:0 0 14px}
+.hero h1{font-size:clamp(30px,5vw,52px); margin:0 0 14px; text-shadow:0 2px 30px #0a0a0a}
 .lede{color:var(--ink); opacity:.82; font-size:clamp(15px,2vw,18px); max-width:600px; margin:0 auto}
 .lede strong{color:var(--ink); opacity:1}
 .hero-cta{display:inline-block; margin-top:26px; text-decoration:none; padding:12px 22px}
@@ -78,10 +78,20 @@ legend{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-trans
 select{width:100%; background:var(--panel); color:var(--ink); border:1px solid var(--line);
   border-radius:7px; padding:9px 10px; font:inherit; font-size:14px}
 
-.palettes{display:flex; gap:8px}
+.palettes{display:flex; flex-wrap:wrap; gap:8px}
 .sw{width:34px; height:34px; border-radius:7px; cursor:pointer; border:2px solid var(--line);
   background:linear-gradient(135deg,var(--a) 0 50%,var(--b) 50% 100%)}
 .sw.on{border-color:var(--ink)}
+.legend .dim,legend .dim{color:var(--dim); font-weight:400}
+.custom-pal{display:flex; gap:14px; margin-top:12px}
+.custom-pal label{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--dim); font-family:var(--mono)}
+.custom-pal input[type=color]{width:34px; height:34px; padding:0; border:1px solid var(--line);
+  border-radius:7px; background:none; cursor:pointer}
+.custom-pal input[type=color]::-webkit-color-swatch{border:0; border-radius:5px}
+.custom-pal input[type=color]::-webkit-color-swatch-wrapper{padding:2px}
+#paletteGroup.disabled{opacity:.4}
+#paletteGroup.disabled .palettes,#paletteGroup.disabled .custom-pal{pointer-events:none}
+#paletteGroup.disabled .depth-note{opacity:1}
 
 .sliders label{display:block; font-size:13px; color:var(--dim); margin-bottom:14px}
 .sliders label span{float:right; font-family:var(--mono); color:var(--ink)}
@@ -116,9 +126,10 @@ canvas{max-width:100%; image-rendering:pixelated; display:none; box-shadow:0 8px
   opacity:.22;
 }
 
-.about{max-width:820px; margin:48px auto; padding:0 24px}
-.about h2{font-size:26px}
-.depths{list-style:none; padding:0; display:grid; gap:10px; margin:18px 0}
+.about{max-width:720px; margin:32px auto; padding:0 24px}
+.about h2{font-size:24px; margin:0 0 12px}
+.about p{margin:0 0 14px}
+.depths{list-style:none; padding:0; display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:16px 0}
 .depths li{border:1px solid var(--line); border-radius:8px; padding:12px 14px; font-size:14px; color:var(--dim)}
 .depths b{color:var(--ink); font-family:var(--mono)}
 .credit a{color:var(--ink)}
@@ -130,4 +141,5 @@ canvas{max-width:100%; image-rendering:pixelated; display:none; box-shadow:0 8px
 @media (max-width:820px){
   .studio{grid-template-columns:1fr}
   .controls{position:static}
+  .depths{grid-template-columns:1fr}
 }
